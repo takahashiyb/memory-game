@@ -1,0 +1,88 @@
+@use './_functions' as f; // Defaults
+
+* {
+  padding: 0;
+  margin: 0;
+  word-wrap: break-word;
+  box-sizing: border-box;
+
+  font-family: 'Atkinson Hyperlegible';
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.25;
+  letter-spacing: 0;
+}
+
+// Variables
+
+// Spacing
+
+$spacing-0000: f.em(0);
+$spacing-0100: f.em(8);
+$spacing-0200: f.em(16);
+$spacing-0300: f.em(24);
+$spacing-0400: f.em(32);
+$spacing-0500: f.em(40);
+$spacing-0600: f.em(48);
+$spacing-1000: f.em(80);
+
+// Typography
+$fsize-01: f.rem(56);
+$fsize-02: f.rem(48);
+$fsize-03: f.rem(44);
+$fsize-04: f.rem(40);
+$fsize-05: f.rem(32);
+$fsize-06: f.rem(26);
+$fsize-07: f.rem(24);
+$fsize-08: f.rem(20);
+$fsize-09: f.rem(18);
+$fsize-10: f.rem(16);
+$fsize-11: f.rem(15);
+$fsize-12: f.rem(14);
+$fsize-13: f.rem(13);
+$lspacing-5: f.em(5);
+
+// Colors
+$white: #ffffff;
+$black: #000000;
+// Grey
+$grey-100: #f2f2f2;
+$grey-050: #fcfcfc;
+// Blue
+$blue-950: #152938;
+$blue-800: #304859;
+$blue-400: #7191a5;
+$blue-350: #6395b8;
+$blue-300: #bcced9;
+$blue-100: #dfe7ec;
+// Orange
+$orange-400: #fda214;
+$orange-300: #ffb84a;
+
+html,
+body,
+#app {
+  height: 100%;
+}
+
+.button__menu {
+  background-color: rgba($blue-100, 100%);
+  color: rgba($blue-800, 100%);
+  width: 100%;
+
+  padding: $spacing-0200;
+
+  border-radius: 9em;
+  border: none;
+}
+
+button:hover {
+  background-color: rgba($orange-400, 100%);
+  color: rgba($white, 100%);
+}
+
+.dialog {
+  max-width: 654px;
+  width: 100%;
+  justify-self: center;
+}
