@@ -1,11 +1,11 @@
 <script lang="ts" setup>
-import { usePlayersStore } from '@/stores/players'
+import { ref, onMounted } from 'vue'
+import { useRoute } from 'vue-router'
 
+import { usePlayersStore } from '@/stores/players'
 import { useBoardStore } from '@/stores/board'
 
-import { useRoute } from 'vue-router'
 import EndDialog from '@/components/EndDialog.vue'
-import { ref, onMounted } from 'vue'
 import MenuDialog from '@/components/MenuDialog.vue'
 
 const icons = import.meta.glob('@/assets/icons/*.svg', { eager: true }) as Record<
@@ -65,28 +65,37 @@ function resetBoard() {
     <header>
       <img src="/assets/icons/logo.svg" alt="logo" />
 
-      <button class="button button__menu" @click="switchButtonMenu()">Menu</button>
+      <button class="button button__menu" @click="switchButtonMenu()">
+        Menu<span class="sr-only">opens the menu dialog box</span>
+      </button>
       <div>
         <RouterLink
           :to="{
             name: 'gamePage',
             query: { theme: board.theme, players: players.countPlayers, size: board.size },
           }"
+          class="link__menu button__menu"
+          @click="resetBoard"
         >
-          <button class="button__menu" @click="resetBoard">Restart</button>
+          Restart
+          <span class="sr-only">creates a new game with the same game settings</span>
         </RouterLink>
 
-        <RouterLink :to="{ name: 'startPage' }">
-          <button class="button__menu button__new-game" @click="resetGame">New Game</button>
+        <RouterLink
+          :to="{ name: 'startPage' }"
+          class="link__menu button__menu button__new-game"
+          @click="resetGame"
+        >
+          New Game<span class="sr-only">returns to the start page</span>
         </RouterLink>
       </div>
     </header>
     <section class="section section__board" :class="`grid${board.size}`">
       <button
         v-for="button in board.buttons"
-        @click="board.pressedButton(button.index)"
+        @click="!button.open && board.pressedButton(button.index)"
         :class="{ found: button.found, open: button.open }"
-        :disabled="board.phase === 'pairing' || button.open"
+        :disabled="board.phase === 'pairing'"
       >
         <p v-if="board.theme === 'numbers' && button.open">
           {{ button.pairId }}
@@ -95,6 +104,9 @@ function resetBoard() {
           v-if="board.theme === 'icons' && button.open"
           :src="icons[`${button.icon}`]!.default"
         />
+        <span class="sr-only">{{
+          `row ${button.row}, column ${button.col} ${button.open ? 'is open and showing numer: ' + button.pairId + '.' : 'is closed, click to open'} ${button.found ? `The pair for this is in ${board.getPair(button)}` : ''} ${button.open && !button.found ? 'Go find its pair.' : ''}`
+        }}</span>
       </button>
     </section>
     <section class="section section__players multiplayer" v-if="players.countPlayers > 1">
@@ -151,6 +163,7 @@ button {
   border: none;
   padding: v.$spacing-0100;
   border-radius: 9em;
+  cursor: pointer;
 }
 
 header {
@@ -171,16 +184,6 @@ header > button {
 
 header div {
   display: none;
-}
-
-@media (min-width: f.em(700)) {
-  header > button {
-    display: none;
-  }
-  header div {
-    display: flex;
-    gap: v.$spacing-0200;
-  }
 }
 
 .button__menu {
@@ -219,26 +222,18 @@ header div {
   border-radius: 50%;
 }
 
+.section__board button:focus-visible {
+  outline: 4px rgba(v.$orange-400, 100%) solid;
+}
+
 .section__board p {
   color: rgba(v.$grey-050, 100%);
   font-size: v.$fsize-07;
 }
 
-@media (min-width: f.em(700)) {
-  .section__board p {
-    font-size: v.$fsize-01;
-  }
-}
-
 .section__board button img {
   width: 35px;
   filter: brightness(0) invert(1);
-}
-
-@media (min-width: f.em(700)) {
-  .section__board button img {
-    width: v.$fsize-01;
-  }
 }
 
 .section__board button:hover {
@@ -247,10 +242,12 @@ header div {
 
 .section__board button.open {
   background-color: rgba(v.$orange-300, 100%);
+  cursor: default;
 }
 
 .section__board button.found {
   background-color: rgba(v.$blue-300, 100%);
+  cursor: default;
 }
 
 .section__board.grid4 {
@@ -292,36 +289,6 @@ header div {
   }
 }
 
-@media (min-width: f.em(700)) {
-  .section__players.multiplayer div {
-    text-align: start;
-    padding: v.$spacing-0200;
-  }
-
-  .section__players.solo div {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: v.$spacing-0200;
-  }
-}
-
-@media (min-width: f.em(1000)) {
-  .section__players.multiplayer div {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .section__players div article {
-    font-size: v.$fsize-09;
-  }
-
-  .section__players div p {
-    font-size: v.$fsize-05;
-  }
-}
-
 .section__players .playing {
   background-color: rgba(v.$orange-400, 100%);
 
@@ -354,12 +321,55 @@ header div {
 }
 
 @media (min-width: f.em(700)) {
+  header > button {
+    display: none;
+  }
+
+  header div {
+    display: flex;
+    gap: v.$spacing-0200;
+  }
+
+  .section__board p {
+    font-size: v.$fsize-01;
+  }
+
+  .section__players.multiplayer div {
+    text-align: start;
+    padding: v.$spacing-0200;
+  }
+
+  .section__players.solo div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: v.$spacing-0200;
+  }
+
   .button__menu {
     font-size: v.$fsize-08;
   }
 }
 
 @media (min-width: f.em(1000)) {
+  .section__board button img {
+    width: v.$fsize-01;
+  }
+
+  .section__players.multiplayer div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .section__players div article {
+    font-size: v.$fsize-09;
+  }
+
+  .section__players div p {
+    font-size: v.$fsize-05;
+  }
+
   .section__players {
     margin-bottom: v.$spacing-0200;
   }

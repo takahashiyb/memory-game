@@ -69,8 +69,10 @@ players.createPlayers()
             name: 'gamePage',
             query: { theme: boardTheme, players: playerCount, size: boardSize },
           }"
-        >
-          <button :disabled="!isReady">Start Game</button></RouterLink
+          :disabled="!isReady"
+          class="button__link"
+          :class="{ ready: isReady }"
+          >Start Game</RouterLink
         >
       </section>
     </div>
@@ -125,7 +127,8 @@ img {
   font-size: v.$fsize-11;
 }
 
-.section button {
+.section button,
+.button__link {
   background-color: rgba(v.$blue-400, 100%);
   color: rgba(v.$grey-050, 100%);
   width: 100%;
@@ -133,13 +136,24 @@ img {
   border: none;
   border-radius: 9em;
   font-size: v.$fsize-10;
+  cursor: pointer;
+}
+
+.button__link {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  background-color: rgba(v.$blue-300, 100%);
+  cursor: default;
 }
 
 @media (min-width: f.em(700)) {
   .section article {
     font-size: v.$fsize-06;
   }
-  .section button {
+  .section button,
+  .button__link {
     font-size: v.$fsize-05;
   }
 }
@@ -152,11 +166,12 @@ img {
   background-color: rgba(v.$blue-800, 100%);
 }
 
-.section__route button {
+.section__route .button__link.ready {
   background-color: rgba(v.$orange-400, 100%);
+  cursor: pointer;
 }
 
-.section__route button:hover {
+.section__route .button__link.ready:hover {
   background-color: rgba(v.$orange-300, 100%);
 }
 </style>

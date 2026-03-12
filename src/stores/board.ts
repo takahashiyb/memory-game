@@ -181,6 +181,14 @@ export const useBoardStore = defineStore('board', () => {
     }
   }
 
+  function getPair(pair: Button) {
+    const otherPair: Button = buttons.value.find(
+      (button) => button.pairId === pair.pairId && button.index !== pair.index,
+    )!
+
+    return `row ${otherPair.row}, column ${otherPair.col}`
+  }
+
   function resetSettings() {
     buttons.value = []
 
@@ -221,5 +229,6 @@ export const useBoardStore = defineStore('board', () => {
     finished,
     resetSettings,
     resetBoard,
+    getPair,
   }
 })

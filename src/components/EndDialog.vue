@@ -57,12 +57,14 @@ function resetBoard() {
         name: 'gamePage',
         query: { theme: board.theme, players: players.countPlayers, size: board.size },
       }"
+      class="link__menu button__menu"
+      @click="resetBoard"
     >
-      <button class="button__menu" @click="resetBoard">Restart</button>
+      Restart
     </RouterLink>
 
-    <RouterLink :to="{ name: 'startPage' }">
-      <button class="button__menu" @click="resetGame">Setup New Game</button>
+    <RouterLink :to="{ name: 'startPage' }" class="link__menu button__menu" @click="resetGame">
+      Setup New Game
     </RouterLink>
   </section>
 </template>

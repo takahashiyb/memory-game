@@ -25,13 +25,18 @@ function resetBoard() {
         name: 'gamePage',
         query: { theme: board.theme, players: players.countPlayers, size: board.size },
       }"
+      class="link__menu button__menu"
+      @click="resetBoard"
     >
-      <button class="button__menu" @click="resetBoard">Restart</button>
+      Restart
+      <span class="sr-only">creates a new game with the same game settings</span>
     </RouterLink>
-    <RouterLink :to="{ name: 'startPage' }">
-      <button class="button__menu" @click="resetGame">New Game</button>
+    <RouterLink :to="{ name: 'startPage' }" class="link__menu button__menu" @click="resetGame">
+      New Game<span class="sr-only">returns to the start page</span>
     </RouterLink>
-    <button class="button__menu" @click="$emit('closeDialog')">Resume Game</button>
+    <button class="button__menu" @click="$emit('closeDialog')">
+      Resume Game<span class="sr-only">returns to the game screen</span>
+    </button>
   </section>
 </template>
 <style scoped lang="scss">

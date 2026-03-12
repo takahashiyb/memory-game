@@ -74,9 +74,16 @@ body,
 
   border-radius: 9em;
   border: none;
+  cursor: pointer;
 }
 
-button:hover {
+.link__menu {
+  display: grid;
+  place-items: center;
+  text-decoration: none;
+}
+
+.button__menu:hover {
   background-color: rgba($orange-400, 100%);
   color: rgba($white, 100%);
 }
@@ -85,4 +92,17 @@ button:hover {
   max-width: 654px;
   width: 100%;
   justify-self: center;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0); /* Fallback for older browsers */
+  clip-path: inset(50%); /* Modern alternative */
+  white-space: nowrap;
+  border: 0;
 }
