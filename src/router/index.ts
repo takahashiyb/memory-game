@@ -13,6 +13,11 @@ const router = createRouter({
       props: true,
       beforeEnter: (to) => {
         if (!to.query.theme || !to.query.players || !to.query.size) {
+          alert(`
+            ${!to.query.theme ? 'Please select a theme.' : ''}
+            ${!to.query.players ? 'Please select the number of players.' : ''}
+            ${!to.query.size ? 'Please select a grid size.' : ''}
+            `)
           return { name: 'startPage' }
         } else {
           return
