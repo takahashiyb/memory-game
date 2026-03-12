@@ -79,19 +79,19 @@ players.createPlayers()
 
 <style scoped lang="scss">
 @use '@/styles/_functions.scss' as f;
-@import '@/styles/main.scss';
+@use '@/styles/main.scss' as v;
 
 main {
   min-height: 100%;
-  background-color: rgba($blue-950, 100%);
+  background-color: rgba(v.$blue-950, 100%);
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: $spacing-0600;
+  gap: v.$spacing-0600;
 
-  padding: $spacing-0300;
+  padding: v.$spacing-0300;
 }
 
 img {
@@ -101,12 +101,12 @@ img {
 .inputs {
   display: flex;
   flex-direction: column;
-  gap: $spacing-0300;
+  gap: v.$spacing-0300;
 
-  background-color: rgba($grey-050, 100%);
+  background-color: rgba(v.$grey-050, 100%);
   width: 100%;
   max-width: 654px;
-  padding: $spacing-0300;
+  padding: v.$spacing-0300;
   border-radius: 10px;
 }
 
@@ -116,48 +116,47 @@ img {
 
 .section div {
   display: flex;
-  width: 100%;
   gap: 8px;
 }
 
 .section article {
-  color: rgba($blue-400, 100%);
-  padding-bottom: $spacing-0100;
-  font-size: $fsize-11;
+  color: rgba(v.$blue-400, 100%);
+  padding-bottom: v.$spacing-0100;
+  font-size: v.$fsize-11;
 }
 
 .section button {
-  background-color: rgba($blue-400, 100%);
-  color: rgba($grey-050, 100%);
+  background-color: rgba(v.$blue-400, 100%);
+  color: rgba(v.$grey-050, 100%);
   width: 100%;
-  height: $spacing-0500;
+  height: v.$spacing-0500;
   border: none;
   border-radius: 9em;
-  font-size: $fsize-10;
+  font-size: v.$fsize-10;
 }
 
 @media (min-width: f.em(700)) {
   .section article {
-    font-size: $fsize-06;
+    font-size: v.$fsize-06;
   }
   .section button {
-    font-size: $fsize-05;
+    font-size: v.$fsize-05;
   }
 }
 
 .section button:hover {
-  background-color: rgba($blue-350, 100%);
+  background-color: rgba(v.$blue-350, 100%);
 }
 
 .section button.selected {
-  background-color: rgba($blue-800, 100%);
+  background-color: rgba(v.$blue-800, 100%);
 }
 
 .section__route button {
-  background-color: rgba($orange-400, 100%);
+  background-color: rgba(v.$orange-400, 100%);
 }
 
 .section__route button:hover {
-  background-color: rgba($orange-300, 100%);
+  background-color: rgba(v.$orange-300, 100%);
 }
 </style>
