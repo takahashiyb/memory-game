@@ -101,7 +101,7 @@ export const useBoardStore = defineStore('board', () => {
           row: row,
           col: col,
           colRow: row + 'x' + col,
-          icon: '/assets/icons/game-icon' + randomizer[count]! + '.svg',
+          icon: '/src/assets/icons/game-icon' + randomizer[count]! + '.svg',
           open: false,
           found: false,
         })

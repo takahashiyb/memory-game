@@ -8,6 +8,11 @@ import EndDialog from '@/components/EndDialog.vue'
 import { ref, onMounted } from 'vue'
 import MenuDialog from '@/components/MenuDialog.vue'
 
+const icons = import.meta.glob('@/assets/icons/*.svg', { eager: true }) as Record<
+  string,
+  { default: string }
+>
+
 const board = useBoardStore()
 
 const players = usePlayersStore()
@@ -86,7 +91,10 @@ function resetBoard() {
         <p v-if="board.theme === 'numbers' && button.open">
           {{ button.pairId }}
         </p>
-        <img v-if="board.theme === 'icons' && button.open" :src="button.icon" />
+        <img
+          v-if="board.theme === 'icons' && button.open"
+          :src="icons[`${button.icon}`]!.default"
+        />
       </button>
     </section>
     <section class="section section__players multiplayer" v-if="players.countPlayers > 1">
@@ -113,7 +121,7 @@ function resetBoard() {
 @import '@/styles/main.scss';
 
 main {
-  height: 100%;
+  min-height: 100%;
   background-color: hsl(var(--white));
 
   display: flex;
