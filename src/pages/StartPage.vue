@@ -82,7 +82,7 @@ players.createPlayers()
 @import '@/styles/main.scss';
 
 main {
-  height: 100%;
+  min-height: 100%;
   background-color: rgba($blue-950, 100%);
 
   display: flex;
