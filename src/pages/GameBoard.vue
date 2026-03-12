@@ -118,7 +118,7 @@ function resetBoard() {
 </template>
 <style scoped lang="scss">
 @use '@/styles/_functions' as f;
-@import '@/styles/main.scss';
+@use '@/styles/main.scss' as v;
 
 main {
   min-height: 100%;
@@ -128,17 +128,17 @@ main {
   flex-direction: column;
   justify-content: space-between;
 
-  padding: $spacing-0300;
+  padding: v.$spacing-0300;
 }
 
 dialog {
   min-height: 100%;
   min-width: 100%;
-  background-color: rgba($black, 50%);
+  background-color: rgba(v.$black, 50%);
 
   align-items: center;
 
-  padding: $spacing-0300;
+  padding: v.$spacing-0300;
 
   z-index: 1;
 }
@@ -149,7 +149,7 @@ dialog[open] {
 
 button {
   border: none;
-  padding: $spacing-0100;
+  padding: v.$spacing-0100;
   border-radius: 9em;
 }
 
@@ -179,21 +179,21 @@ header div {
   }
   header div {
     display: flex;
-    gap: $spacing-0200;
+    gap: v.$spacing-0200;
   }
 }
 
 .button__menu {
-  color: rgba($white, 100%);
-  font-size: $fsize-10;
-  background-color: rgba($orange-400, 100%);
-  padding-inline: $spacing-0200;
+  color: rgba(v.$white, 100%);
+  font-size: v.$fsize-10;
+  background-color: rgba(v.$orange-400, 100%);
+  padding-inline: v.$spacing-0200;
 }
 
 .button__new-game {
   white-space: nowrap;
-  background-color: rgba($blue-100, 100%);
-  color: rgba($blue-950, 100%);
+  background-color: rgba(v.$blue-100, 100%);
+  color: rgba(v.$blue-950, 100%);
 }
 
 .section__board {
@@ -204,14 +204,14 @@ header div {
 
   display: grid;
   align-items: start;
-  gap: $spacing-0100;
+  gap: v.$spacing-0100;
 
-  padding-bottom: $spacing-0600;
+  padding-bottom: v.$spacing-0600;
 }
 
 .section__board button {
   aspect-ratio: 1;
-  background-color: $blue-800;
+  background-color: v.$blue-800;
 
   display: grid;
   place-content: center;
@@ -220,13 +220,13 @@ header div {
 }
 
 .section__board p {
-  color: rgba($grey-050, 100%);
-  font-size: $fsize-07;
+  color: rgba(v.$grey-050, 100%);
+  font-size: v.$fsize-07;
 }
 
 @media (min-width: f.em(700)) {
   .section__board p {
-    font-size: $fsize-01;
+    font-size: v.$fsize-01;
   }
 }
 
@@ -237,20 +237,20 @@ header div {
 
 @media (min-width: f.em(700)) {
   .section__board button img {
-    width: $fsize-01;
+    width: v.$fsize-01;
   }
 }
 
 .section__board button:hover {
-  background-color: rgba($blue-350, 100%);
+  background-color: rgba(v.$blue-350, 100%);
 }
 
 .section__board button.open {
-  background-color: rgba($orange-300, 100%);
+  background-color: rgba(v.$orange-300, 100%);
 }
 
 .section__board button.found {
-  background-color: rgba($blue-300, 100%);
+  background-color: rgba(v.$blue-300, 100%);
 }
 
 .section__board.grid4 {
@@ -264,7 +264,7 @@ header div {
 .section__players {
   display: flex;
   align-items: flex-end;
-  gap: $spacing-0300;
+  gap: v.$spacing-0300;
   justify-content: center;
 
   min-width: 100%;
@@ -274,35 +274,35 @@ header div {
   flex: 1;
   text-align: center;
 
-  background-color: rgba($blue-100, 100%);
+  background-color: rgba(v.$blue-100, 100%);
   max-width: 255px;
 
-  padding: $spacing-0100;
+  padding: v.$spacing-0100;
 
   border-radius: 5px;
 
   article {
-    color: rgba($blue-400, 100%);
-    font-size: $fsize-11;
+    color: rgba(v.$blue-400, 100%);
+    font-size: v.$fsize-11;
   }
 
   p {
-    color: rgba($blue-800, 100%);
-    font-size: $fsize-07;
+    color: rgba(v.$blue-800, 100%);
+    font-size: v.$fsize-07;
   }
 }
 
 @media (min-width: f.em(700)) {
   .section__players.multiplayer div {
     text-align: start;
-    padding: $spacing-0200;
+    padding: v.$spacing-0200;
   }
 
   .section__players.solo div {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: $spacing-0200;
+    padding: v.$spacing-0200;
   }
 }
 
@@ -314,32 +314,32 @@ header div {
   }
 
   .section__players div article {
-    font-size: $fsize-09;
+    font-size: v.$fsize-09;
   }
 
   .section__players div p {
-    font-size: $fsize-05;
+    font-size: v.$fsize-05;
   }
 }
 
 .section__players .playing {
-  background-color: rgba($orange-400, 100%);
+  background-color: rgba(v.$orange-400, 100%);
 
   position: relative;
 
   article {
-    color: rgba($white, 100%);
+    color: rgba(v.$white, 100%);
   }
 
   p {
-    color: rgba($white, 100%);
+    color: rgba(v.$white, 100%);
   }
 
   ::before {
     content: '';
     height: 16px;
     aspect-ratio: 1;
-    background-color: rgba($orange-400, 100%);
+    background-color: rgba(v.$orange-400, 100%);
 
     position: absolute;
     top: 0;
@@ -355,13 +355,13 @@ header div {
 
 @media (min-width: f.em(700)) {
   .button__menu {
-    font-size: $fsize-08;
+    font-size: v.$fsize-08;
   }
 }
 
 @media (min-width: f.em(1000)) {
   .section__players {
-    margin-bottom: $spacing-0200;
+    margin-bottom: v.$spacing-0200;
   }
 
   .section__players .playing::after {

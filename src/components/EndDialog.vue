@@ -67,47 +67,47 @@ function resetBoard() {
   </section>
 </template>
 <style lang="scss" scoped>
-@import '@/styles/main.scss';
+@use '@/styles/main.scss' as v;
 
 .section__end {
-  background-color: rgba($grey-050, 100%);
+  background-color: rgba(v.$grey-050, 100%);
 
   display: grid;
-  row-gap: $spacing-0300;
+  row-gap: v.$spacing-0300;
 
-  padding: $spacing-0300;
+  padding: v.$spacing-0300;
 
   border-radius: 10px;
 }
 
 div {
-  background-color: rgba($blue-100, 100%);
+  background-color: rgba(v.$blue-100, 100%);
 }
 
 .section__congrats {
   display: grid;
-  gap: $spacing-0100;
+  gap: v.$spacing-0100;
 }
 
 .section__congrats article {
-  font-size: $fsize-07;
+  font-size: v.$fsize-07;
   text-align: center;
-  color: rgba($blue-950, 100%);
+  color: rgba(v.$blue-950, 100%);
 }
 
 .section__congrats p {
-  font-size: $fsize-12;
+  font-size: v.$fsize-12;
   text-align: center;
-  color: rgba($blue-400, 100%);
+  color: rgba(v.$blue-400, 100%);
 }
 
 .stats {
   display: grid;
-  gap: $spacing-0100;
+  gap: v.$spacing-0100;
 }
 
 .stats div {
-  padding: $spacing-0200;
+  padding: v.$spacing-0200;
 
   display: flex;
   justify-content: space-between;
@@ -115,21 +115,21 @@ div {
 }
 
 .stats div article {
-  color: rgba($blue-400, 100%);
-  font-size: $fsize-12;
+  color: rgba(v.$blue-400, 100%);
+  font-size: v.$fsize-12;
 }
 
 .stats div p {
-  color: rgba($blue-800, 100%);
-  font-size: $fsize-08;
+  color: rgba(v.$blue-800, 100%);
+  font-size: v.$fsize-08;
 }
 
 .stats .winner {
-  background-color: rgba($blue-950, 100%);
+  background-color: rgba(v.$blue-950, 100%);
 }
 
 .stats .winner article,
 .stats .winner p {
-  color: rgba($grey-050, 100%);
+  color: rgba(v.$grey-050, 100%);
 }
 </style>

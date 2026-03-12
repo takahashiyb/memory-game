@@ -35,15 +35,15 @@ function resetBoard() {
   </section>
 </template>
 <style scoped lang="scss">
-@import '@/styles/main.scss';
+@use '@/styles/main.scss' as v;
 
 .section__menu {
-  background-color: rgba($white, 100%);
+  background-color: rgba(v.$white, 100%);
 
   display: grid;
-  row-gap: $spacing-0200;
+  row-gap: v.$spacing-0200;
 
-  padding: $spacing-0300;
+  padding: v.$spacing-0300;
 
   border-radius: 10px;
 }
