@@ -132,8 +132,8 @@ main {
 }
 
 dialog {
-  height: 100%;
-  width: 100%;
+  min-height: 100%;
+  min-width: 100%;
   background-color: rgba($black, 50%);
 
   align-items: center;
@@ -267,7 +267,7 @@ header div {
   gap: $spacing-0300;
   justify-content: center;
 
-  width: 100%;
+  min-width: 100%;
 }
 
 .section__players div {
